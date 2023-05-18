@@ -1,0 +1,676 @@
+<body class="container">
+
+
+    <section>
+        <div class="fixed-top product" style="z-index: 100;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark d-none d-md-block">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contacts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Settings</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <section class="mobile-header d-none">
+        <header class="product-mobile-header">
+            <div class="d-flex justify-content-between">
+                <div class="header-left">
+                    <a routerLink="/home" class="curosr">
+                        <span class="bi bi-chevron-left font-bold"></span>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <a href="" class="curosr"> <span class="bi bi-heart font-bold"></span></a>
+                    <a href="" class="curosr"> <span class="bi bi-share-fill font-bold"></span></a>
+                    <a href="" class="curosr"> <span class="bi bi-cart-fill font-bold" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" data-bs-title="Tooltip on top"><span
+                                class="translate-middle badge bg-danger">2</span></span></a>
+                </div>
+            </div>
+        </header>
+    </section>
+
+
+    <section class="product-breadcrumb d-none d-md-block">
+        <nav class="breads" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item active">{{product?.breadCrumb}}</li>
+                <!--  <li class="breadcrumb-item active" aria-current="page">Products</li>
+                <li class="breadcrumb-item active" aria-current="page">Men</li>
+                <li class="breadcrumb-item active" aria-current="page">Shirts</li>
+                <li class="breadcrumb-item active">Casual Shirt</li>
+                <li class="breadcrumb-item active">Men's Regular-Fit Long Shirt</li> -->
+            </ol>
+        </nav>
+    </section>
+
+    <section style="margin-top: 2%;" class="product-main-card">
+        <div class="row">
+            <div class="col-md-3">
+                <div id="carouselExampleCaptions" class="carousel slide product-carousel" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <ng-container *ngFor="let image of product?.imageUrls; let i = index">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="i"
+                                class="active mb-4" aria-current="true" aria-label="Slide 1">
+                                <img [src]="environment.backendUrl + image  || './assets/images/slide1.png'"
+                                    class="d-block h-10 w-10 img-fluid" alt="...">
+                            </button>
+                        </ng-container>
+                        <!-- <button class="mb-4" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide-to="1" aria-label="Slide 2">
+                            <img src="./assets/images/silde2.jpg" class="d-block h-10 w-10 img-fluid" alt="...">
+                        </button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3">
+                            <img src="./assets/images/silde3.jpg" class="d-block h-10 w-10 img-fluid" alt="...">
+                        </button> -->
+                    </div>
+                    <div class="carousel-inner">
+                        <ng-container *ngFor="let image of product?.imageUrls; let i = index">
+                            <div class="carousel-item" [ngClass]="(i === 0) ? 'active' : ''">
+                                <img [src]="environment.backendUrl + image || './assets/images/slide1.png'"
+                                    class="d-block  w-100 img-fluid" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>First slide label</h5>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h6 style="opacity: .5;"><i class="bi bi-bag-check-fill"></i> {{product?.tags}}</h6>
+                <h3>{{product?.title}}</h3>
+
+                <p>{{product?.shortDescription}}</p>
+                <div class="rating">
+                    <span class="bi bi-star-fill color-gold"></span>
+                    <span class="opacity-moderate">
+                        <span>4.9 | 2500</span>
+                        <i class="bi bi-dot"></i>
+                        <span>200k Reviews</span>
+                        <i class="bi bi-dot"></i>
+                        <span>(200 Orders)</span>
+                    </span>
+                </div>
+
+                <div class="product-detail mt-4">
+                    <div class="nav nav-pills" id="pills-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                            data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                            aria-selected="true">About</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Review</button>
+                    </div>
+                    <hr class="opacity-low">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <div class="table-responsive about">
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td>Brand:</td>
+                                        <td><strong>{{product?.brand}}</strong></td>
+                                        <td>Size:</td>
+                                        <td><strong>{{product?.size}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stock:</td>
+                                        <td><strong>{{product?.qty}}</strong></td>
+                                        <td>Location:</td>
+                                        <td><strong>{{product?.availOnStore}}</strong></td>
+                                    </tr>
+                                    
+
+                                </table>
+
+                                <hr class="opacity-low">
+                                <h6 class="font-weight-bold"><strong>Description:</strong></h6>
+                                <div class="description">
+
+                                    <p class="mt-2">
+                                        {{product?.description}}
+                                    </p>
+                                    <!-- <ul class="mt-2">
+                                        <li>Patch Pocket on Left Chest</li>
+                                        <li>Go to Classic button down shirt for all special occasions</li>
+                                        <li>Long-sleeve dress shirt in classic fit featuring button-down collar</li>
+                                        <li>It is a long established fact that a reader will be distracted by the
+                                            readable content</li>
+                                    </ul> -->
+
+                                    <p class="mt-2">Chat us if there is anything you need to ask about the product :)
+                                    </p>
+                                </div>
+                                <p class="mt-2 bold color-primary curosr">See less <i class="ml-2 bi bi-chevron-up"></i>
+                                </p>
+
+                                <strong>Disclaimer:</strong> <span class="note-text"> Due to the photographic lighting &
+                                    different screen calibrations, the colors of the original product may slightly vary
+                                    from the picture.</span>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                            <form action="">
+                                <div class="mb-3">
+                                    <input type="text" name="userName" required ="user.name" class="form-control" placeholder="Your name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email"  name="email" required [(ngModel)]="user.email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" required name="message" [(ngModel)]="user.message"  placeholder="Your message" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" (click)="sendMessage()" class="btn review-btn">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <hr class="opacity-low">
+                    <div>
+                        <h6 class="font-weight-bold">Shipping Information :</h6>
+                        <div>
+                            <span>Delivery: </span> <span class="font-weight-bold opacity-moderate">Shipping from
+                                Jakarta</span>
+                        </div>
+                        <div>
+                            <span>Shipping: </span> <span class="font-weight-bold opacity-moderate">3days standard
+                                delivery</span>
+                        </div>
+                        <div>
+                            <span>Arrive: </span> <span class="font-weight-bold opacity-moderate">Shipping from
+                                Jakarta</span>
+                        </div>
+                    </div>
+                    <hr class="opacity-low">
+                    <div>
+                        <h6 class="font-weight-bold">Seller Information :</h6>
+                        <table class="table table-borderless seller-info">
+                            <tr>
+                                <td class="w-20">
+                                    <div class="seller-name">
+
+                                        <h6 class="font-weight-bold"><strong>{{product?.sellerName}}</strong></h6>
+                                        <span class="bi bi-dot"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h6 class="font-weight-bold"><strong>{{product?.sellerName}}</strong></h6>
+                                    <p class="opacity-moderate">{{product?.sellerDescription}}</p>
+                                    <button class="btn "> <span class="bi bi-handbag-fill"></span>Visit Store</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-none d-md-block">
+                <div class="card order-card">
+
+                    <!-- -->
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold">Order</h4>
+                        <hr class="opacity-low">
+                        <h5 class="font-weight-bold">Selected Size:</h5>
+                        <h5>XL (Extra Large)</h5>
+                        <img [src]="product?.imageUrls ? environment.backendUrl + product?.imageUrls[0] :  '/assets/images/slide1.png'" class="card-img-top" alt="...">
+
+                        <p class="mt-2 font-weight-bold">
+                            Total Price: {{product?.price | number: '1.0-0'}}
+                        </p>
+
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item font-weight-bold"><button class="btn review-btn w-100">Buy
+                                Now</button></li>
+                        <li class="list-group-item font-weight-bold"><button class="btn cart-btn w-100"><span
+                                    class="bi bi-cart-fill"></span> Add to Cart</button></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-2 d-md-block d-none">
+        <div class="row">
+            <div class="col-8">
+                <hr class="opacity-low">
+                <div class="row reviews-ratings">
+                    <div class="col-6">
+                        <h6 class="font-weight-bold"><strong>Reviews & Ratings</strong></h6>
+                        <span class="font-weight-bold">4.9/5.0</span>
+                        <span class="bi-star-fill color-gold"></span>
+                        <span class="bi-star-fill color-gold"></span>
+                        <span class="bi-star-fill color-gold"></span>
+                        <span class="bi-star-half color-gold"></span>
+                        <span class="bi-star"></span>
+
+                        <div class="total-order opacity-moderate"> 2.3k Rating </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-3 text-end"><span class="bi-star-fill color-gold"></span> 5</div>
+                            <div class="col-6">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">1.5K</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 text-end"><span class="bi-star-fill color-gold"></span> 4</div>
+                            <div class="col-6">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">1K</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 text-end"><span class="bi-star-fill color-gold"></span> 3</div>
+                            <div class="col-6">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">700</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 text-end"><span class="bi-star-fill color-gold"></span> 2</div>
+                            <div class="col-6">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">40</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3 text-end"><span class="bi-star-fill color-gold"></span> 1</div>
+                            <div class="col-6">
+                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-success" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            <div class="col-3">4</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <h6 class="font-weight-bold"><strong>Reviews with images and videos</strong></h6>
+                <div class="review-images">
+                    <img src="./assets/images/slide1.png" alt="">
+                    <img src="./assets/images/slide1.png" class="review-img-margin" alt="">
+                    <img src="./assets/images/slide1.png" class="review-img-margin" alt="">
+                    <img src="./assets/images/slide1.png" class="review-img-margin opacity-moderate" alt="">
+                    <span class="centered">4+</span>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="opacity-low">
+    <section class="mt-2 top-reviews">
+        <div class="d-flex justify-content-between">
+            <div style="max-width: 50%;">
+                <h6 class="font-weight-bold"><strong>Top Reviews</strong></h6>
+                <p class="opacity-moderate">Showing 3 of 200k Reiews from last year</p>
+
+            </div>
+
+            <div style="max-width: 50%;">
+                <div class="btn-group dropdown">
+                    <button type="button" style="background-color: var(--bs-white);" class="btn dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Popular
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="" class="dropdown-item">Oldest</a></li>
+                        <li><a href="" class="dropdown-item">Newest</a></li>
+                        <li><a href="" class="dropdown-item">Highest first</a></li>
+                        <li><a href="" class="dropdown-item">Lowest first</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="d-flex justify-content-between review">
+                <div style="max-width: 50%;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="./assets/images/card-1.jpg" alt="Customer Image"
+                                                class="img-fluid avatar img-rounded">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h6 class="card-title ">Eren Y*****r</h6>
+                                            <p class="btn btn-info product-category">Category1</p>
+                                            <p class="btn product-category">Category2</p>
+
+
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <p class="card-text font-weight-bold">Lorem ipsum dolor sit amet consectetur
+                                                adipisicing
+                                                elit. Laboriosam, omnis?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="max-width: 50%;">
+                    <span class="col-2 bi-star-fill color-gold curosr"></span>
+                    <span class="col-8 curosr">5.0</span>
+                    <span class="col-2 bi-three-dots-vertical curosr"></span>
+                </div>
+
+
+            </div>
+            <div class="d-flex justify-content-between review">
+                <div style="max-width: 50%;" class="color-primary helpfull"><span
+                        class="bi-hand-thumbs-up-fill"></span><span>Helpfull</span></div>
+                <div style="max-width: 50%;" class="review-day">Wednesday</div>
+            </div>
+        </div>
+        <hr class="opacity-low">
+
+        <div class="row">
+            <div class="d-flex justify-content-between review">
+                <div style="max-width: 50%;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="./assets/images/card-1.jpg" alt="Customer Image"
+                                                class="img-fluid avatar img-rounded">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h6 class="card-title font-weight-bold">Eren Y*****r</h6>
+                                            <p class="btn btn-info product-category">Category1</p>
+                                            <p class="btn product-category">Category2</p>
+
+
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <p class="card-text font-weight-bold">Lorem ipsum dolor sit amet consectetur
+                                                adipisicing
+                                                elit. Laboriosam, omnis?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="max-width: 50%;">
+                    <span class="col-2 bi-star-fill color-gold curosr"></span>
+                    <span class="col-8 curosr">5.0</span>
+                    <span class="col-2 bi-three-dots-vertical curosr"></span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between review">
+                <div style="max-width: 50%;" class="color-primary"><span
+                        class="bi-hand-thumbs-up-fill"></span><span>Helpful</span></div>
+                <div style="max-width: 50%;">Wednesday</div>
+            </div>
+        </div>
+        <hr class="opacity-low">
+
+        <div class="row">
+            <div class="d-flex justify-content-between review">
+                <div style="max-width: 50%;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                            <img src="./assets/images/card-1.jpg" alt="Customer Image"
+                                                class="img-fluid avatar img-rounded">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h6 class="card-title font-weight-bold">Eren Y*****r</h6>
+                                            <p class="btn btn-info product-category">Category1</p>
+                                            <p class="btn product-category">Category2</p>
+
+
+                                        </div>
+                                        <div class="col-12 mt-4">
+                                            <p class="card-text font-weight-bold">Lorem ipsum dolor sit amet consectetur
+                                                adipisicing
+                                                elit. Laboriosam, omnis?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="max-width: 50%;">
+                    <span class="col-2 bi-star-fill color-gold curosr"></span>
+                    <span class="col-8 curosr">5.0</span>
+                    <span class="col-2 bi-three-dots-vertical curosr"></span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between review">
+                <div style="max-width: 50%;" class="color-primary"><span
+                        class="bi-hand-thumbs-up-fill"></span><span>Helpful</span></div>
+                <div style="max-width: 50%;">Wednesday</div>
+            </div>
+        </div>
+        <hr class="opacity-low">
+
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true" class="bi-chevron-left"></span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">...</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true" class="bi-chevron-right"></span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section class="product-recomendations">
+        <h6 class="font-weight-bold"><strong>Recomendations</strong></h6>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card" data-aos="fade-down">
+                    <img src="./assets/images/card-1.jpg" class="card-img-top curosr" alt="...">
+                    <div class="card-body">
+                        <p class="opacity-moderate">Shirts</p>
+                        <h6 class="card-title curosr font-weight-bold">Essentials's Men's Short-Sleeve Crewneck T-Shirt
+                        </h6>
+                        <div class="card-text">
+                            <div class="d-flex justify-content-between sticky">
+                                <div class="product-rating">
+                                    <i class="bi bi-star-fill color-gold"></i><span class="opacity-moderate"> 4.9 |
+                                        2500</span>
+                                </div>
+                                <div class="product-price curosr">
+                                    $12.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0 curosr">
+                        <div class="wishlist-container">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card" data-aos="fade-down">
+                    <img src="./assets/images/card-2.jpg" class="card-img-top curosr" alt="...">
+                    <div class="card-body">
+                        <p class="opacity-moderate">Shirts</p>
+                        <h6 class="card-title curosr font-weight-bold">Essentials's Men's Short-Sleeve Crewneck T-Shirt
+                        </h6>
+                        <div class="card-text">
+                            <div class="d-flex justify-content-between sticky">
+                                <div class="product-rating">
+                                    <i class="bi bi-star-fill color-gold"></i><span class="opacity-moderate"> 4.9 |
+                                        2500</span>
+                                </div>
+                                <div class="product-price curosr">
+                                    $12.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0 curosr">
+                        <div class="wishlist-container">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
+                <div class="card" data-aos="fade-down">
+                    <img src="./assets/images/card-1.jpg" class="card-img-top curosr" alt="...">
+                    <div class="card-body">
+                        <p class="opacity-moderate">Shirts</p>
+                        <h6 class="card-title curosr font-weight-bold">Essentials's Men's Short-Sleeve Crewneck T-Shirt
+                        </h6>
+                        <div class="card-text">
+                            <div class="d-flex justify-content-between sticky">
+                                <div class="product-rating">
+                                    <i class="bi bi-star-fill color-gold"></i><span class="opacity-moderate"> 4.9 |
+                                        2500</span>
+                                </div>
+                                <div class="product-price curosr">
+                                    $12.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0 curosr">
+                        <div class="wishlist-container">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card" data-aos="fade-down">
+                    <img src="./assets/images/card-2.jpg" class="card-img-top curosr" alt="...">
+                    <div class="card-body">
+                        <p class="opacity-moderate">Shirts</p>
+                        <h6 class="card-title curosr font-weight-bold">Essentials's Men's Short-Sleeve Crewneck T-Shirt
+                        </h6>
+                        <div class="card-text">
+                            <div class="d-flex justify-content-between sticky">
+                                <div class="product-rating">
+                                    <i class="bi bi-star-fill color-gold"></i><span class="opacity-moderate"> 4.9 |
+                                        2500</span>
+                                </div>
+                                <div class="product-price curosr">
+                                    $12.00
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer p-0 curosr">
+                        <div class="wishlist-container">
+                            <i class="bi bi-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="mobile-footer">
+        <footer class="product-footer d-none">
+            <div class="d-flex justify-content-between">
+                <div class="footer-left font-weight-bold">
+                    <span class="opacity-moderate">Total Price.</span>
+                    <div class="color-primary curosr fs-1">$ {{product?.price | number: '1.0-0'}}</div>
+                </div>
+                <div class="footer-right">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-order curosr">1<div class="bi bi-bag-check-fill"></div>
+                        </button>
+                        <button type="button" class="btn btn-cart curosr"><span
+                                class="d-block">Buy</span><span>Now</span></button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+</body>

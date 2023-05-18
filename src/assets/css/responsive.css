@@ -1,0 +1,171 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    html {
+        font-size: 10px;
+    }
+    .home-slider .carousel .carousel-item {
+        height: 30vh;
+    }
+
+    .card-image-position {
+        margin-left: 43%;
+    }
+
+    .carousel-indicators {
+        bottom: 60%;
+        left: 60%;
+    }
+
+    .carousel-caption h3 {
+        padding-top: 15%;
+    }
+
+    .absolute-div {
+        font-size: x-small;
+    }
+
+    .carousel-caption button {
+        font-size: xx-small;
+        width: max-content;
+    }
+
+    .product-sticky {
+        top: 17px;
+    }
+
+    .list-products .card {
+        margin-bottom: 20px;
+    }
+
+    .see-more {
+        font-size: smaller;
+    }
+
+    .product-listing {
+        margin-top: 50px;
+    }
+
+    .product-listing .title {
+        font-size: smaller;
+    }
+
+    .list-products .card img {
+        object-fit: contain;
+        background-color: var(--paragraph-color);
+        max-height: 10rem;
+    }
+
+    .product-recomendations .card {
+        width: unset;
+        margin-top: 20px;
+    }
+
+    .product-recomendations .card img {
+        object-fit: contain;
+        margin-left: unset;
+        background-color: var(--paragraph-color);
+    }
+
+    .product-recomendations .card .wishlist-container {
+        top: 15px;
+        right: 15px;
+    }
+
+    .review .product-category {
+        font-size: 8px;
+        font-weight: 500;
+    }
+    /* .review .card-title, .review .card-text, .review .review-day, .review .helpfull{
+        font-size: 10px;
+    } */
+    .review .card-text {
+        font-size: 10px;
+    }
+
+    .seller-name{
+        width: 65px;
+        height: 60px;
+        line-height: 30px;
+    }
+
+    .mobile-header {
+        display: block !important;
+    }
+
+    .product-footer{
+        display: block !important;
+    }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    html {
+        font-size: 12px;
+    }
+    .home .carousel .carousel-item {
+        height: 60vh;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .home .carousel .carousel-item {
+        height: 70vh;
+    }
+    .product-listing{
+        margin-bottom: 20px;
+    }
+    .list-products .card {
+        margin-top: 20px;
+    }
+
+    .list-products .card img {
+        background-color: var(--paragraph-color);
+        max-height: 20rem;
+    }
+    .product-breadcrumb {
+        margin-top: 5rem;
+    }
+    .product-carousel .carousel-indicators  {
+        bottom: 20%;
+        right: auto;
+    }
+
+    .seller-name {
+        height: 90px;
+        width: 90px;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    html {
+        font-size: 16px;
+    }
+    .review-images .centered {
+        left: 85.5%;
+    }
+
+    .product-carousel .carousel-indicators  {
+        bottom: 40%;
+        right: auto;
+    }
+    /* .list-products .card {
+        margin-top: 20px;
+    }
+      */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {
+        .list-products .card img {
+            background-color: var(--paragraph-color);
+            max-height: 25rem;
+        }
+    }
