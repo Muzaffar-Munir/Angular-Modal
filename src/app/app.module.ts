@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CustomhttpInterceptor } from './interceptors/customhttp.interceptor';
 import { ContactComponent } from './contact/contact.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ContactComponent } from './contact/contact.component';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
+    ModalModule.forRoot(),
     SlickCarouselModule 
   ],
   providers: [{

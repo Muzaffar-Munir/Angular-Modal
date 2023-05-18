@@ -11,12 +11,12 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 curosr">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contacts</a>
+                                <a class="nav-link" (click)="openModal(contact)">Contacts</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Settings</a>
@@ -55,7 +55,7 @@
     <section class="product-breadcrumb d-none d-md-block">
         <nav class="breads" aria-label="breadcrumb">
             <ol class="breadcrumb">
-               <li class="breadcrumb-item active">{{product?.breadCrumb}}</li>
+                <li class="breadcrumb-item active">{{product?.breadCrumb}}</li>
                 <!--  <li class="breadcrumb-item active" aria-current="page">Products</li>
                 <li class="breadcrumb-item active" aria-current="page">Men</li>
                 <li class="breadcrumb-item active" aria-current="page">Shirts</li>
@@ -151,7 +151,7 @@
                                         <td>Location:</td>
                                         <td><strong>{{product?.availOnStore}}</strong></td>
                                     </tr>
-                                    
+
 
                                 </table>
 
@@ -184,20 +184,7 @@
                         </div>
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 
-                            <form action="">
-                                <div class="mb-3">
-                                    <input type="text" name="userName" required ="user.name" class="form-control" placeholder="Your name">
-                                </div>
-                                <div class="mb-3">
-                                    <input type="email"  name="email" required [(ngModel)]="user.email" class="form-control" placeholder="Your Email">
-                                </div>
-                                <div class="mb-3">
-                                    <textarea class="form-control" required name="message" [(ngModel)]="user.message"  placeholder="Your message" rows="3"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" (click)="sendMessage()" class="btn review-btn">Submit</button>
-                                </div>
-                            </form>
+                            <app-contact (onClose)="modalRef?.hide()"></app-contact>
                         </div>
                     </div>
                     <hr class="opacity-low">
@@ -247,7 +234,8 @@
                         <hr class="opacity-low">
                         <h5 class="font-weight-bold">Selected Size:</h5>
                         <h5>XL (Extra Large)</h5>
-                        <img [src]="product?.imageUrls ? environment.backendUrl + product?.imageUrls[0] :  '/assets/images/slide1.png'" class="card-img-top" alt="...">
+                        <img [src]="product?.imageUrls ? environment.backendUrl + product?.imageUrls[0] :  '/assets/images/slide1.png'"
+                            class="card-img-top" alt="...">
 
                         <p class="mt-2 font-weight-bold">
                             Total Price: {{product?.price | number: '1.0-0'}}
@@ -672,5 +660,18 @@
         </footer>
     </section>
 
+    <ng-template #contact>
+        <div class="container">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Contact Us!</h4>
+                <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true" class="visually-hidden">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-contact (onClose)="modalRef?.hide()"></app-contact>
+            </div>
+        </div>
 
+    </ng-template>
 </body>

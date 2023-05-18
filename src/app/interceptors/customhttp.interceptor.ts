@@ -27,7 +27,25 @@ export class CustomhttpInterceptor implements HttpInterceptor {
         }
       }, (error) => {
         this.spinnerService.hide();
+        if (error && error.error && error.error.errors) {
+          this.toastr.error(this.formatErrorMessages(error.error.errors));
+          return;
+        }
+
+
         this.toastr.error('Error, Something went wrong!')
+
       }));
   }
+
+  private formatErrorMessages(errors: any): string {
+    let formattedMessages = '';
+    for (const key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        formattedMessages += `${errors[key]}\n`;
+      }
+    }
+    return formattedMessages;
+  }
+
 }

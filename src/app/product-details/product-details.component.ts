@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BaseService } from '../services/base.service';
 import { environment } from 'src/environments/environment.development';
 import { ToastrService } from 'ngx-toastr';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-product-details',
@@ -14,13 +15,13 @@ export class ProductDetailsComponent implements OnInit {
   id: any;
   product: any;
   environment: any;
-  user: any;
-  constructor(private route: ActivatedRoute, private baseService: BaseService, private toastr: ToastrService) {
+  modalRef?: BsModalRef;
+  constructor(private route: ActivatedRoute, private baseService: BaseService,
+     private toastr: ToastrService, private modalService: BsModalService) {
     this.environment = environment;
   }
 
   ngOnInit(): void {
-    this.initilizeUserForm();
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
     if (this.id) {
@@ -28,13 +29,6 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  private initilizeUserForm() {
-    this.user = {
-      name: '',
-      email: '',
-      message: ''
-    }
-  }
   private getProductDetails() {
     this.baseService.getData('/Product/' + this.id).subscribe({
       next: (response) => {
@@ -44,18 +38,12 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  sendMessage() {
-    this.baseService.postData('/Contact', this.user).subscribe({
-      next: (response) => {
-        this.product = response;
-        this.toastr.success('Your message successfully sent')
-        this.initilizeUserForm()
 
 
-      }, error: (err) => {
 
-
-      }
-    })
+  openModal(template: any) {
+    this.modalRef = this.modalService.show(template, {
+      class: 'modal-dialog-centered' 
+    });
   }
 }

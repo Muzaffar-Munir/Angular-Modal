@@ -18,14 +18,14 @@
 
         <!-- Right Element -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 curosr">
             <li class="nav-item">
               <a class="nav-link active" href="#">
                 Home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" (click)="openModal(contact)">
                 Contacts
               </a>
             </li>
@@ -260,3 +260,18 @@
   </div>
 
 </section>
+
+<ng-template #contact>
+  <div class="container">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Contact Us!</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-contact (onClose)="modalRef?.hide()"></app-contact>
+    </div>
+  </div>
+
+</ng-template>

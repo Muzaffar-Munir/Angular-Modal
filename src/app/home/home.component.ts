@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../services/base.service';
 import { environment } from 'src/environments/environment.development';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,9 @@ export class HomeComponent implements OnInit {
   // Array<{id: number, name: string, category: string, description: string, imageUrls: any}>
 products: any= [];
 enviroment: any = environment;
-  constructor(private baseService: BaseService) {
+modalRef?: BsModalRef;
+
+  constructor(private baseService: BaseService, private modalService: BsModalService) {
 
   }
 
@@ -55,5 +58,12 @@ enviroment: any = environment;
 
       }
     })
+  }
+
+ 
+  openModal(template: any) {
+    this.modalRef = this.modalService.show(template, {
+      class: 'modal-dialog-centered' 
+    });
   }
 }
