@@ -1,0 +1,12 @@
+.social-icons a {
+    margin-right: 20px;
+    color: unset;
+}
+.social-icons {
+    text-align: center;
+}
+
+.footer footer .nav-item a{
+    color: #2b2d41 !important;
+    opacity: .7;
+}

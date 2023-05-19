@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BaseService } from '../services/base.service';
 import { environment } from 'src/environments/environment.development';
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BaseService } from 'src/app/services/base.service';
 
 @Component({
   selector: 'app-product-details',
@@ -23,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
+    console.log(this.route);
+    
     if (this.id) {
       this.getProductDetails();
     }

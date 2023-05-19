@@ -1,0 +1,16 @@
+.products .link-decoration {
+    text-decoration: none;
+    color: unset;
+}
+
+.pagination .page-item .active{
+    font-weight: 900;
+    background-color: var(--primary-color);
+    color: var(--paragraph-color);
+}
+
+.pagination .disabled{
+    cursor: not-allowed;
+    pointer-events: all !important;
+    opacity: .6;
+}

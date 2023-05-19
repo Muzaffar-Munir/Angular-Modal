@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseService } from '../services/base.service';
 import { environment } from 'src/environments/environment.development';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BaseService } from 'src/app/services/base.service';
 
 @Component({
   selector: 'app-home',
@@ -48,10 +48,10 @@ modalRef?: BsModalRef;
   }
 
   private getProducts() {
-    this.baseService.getData('/Product').subscribe({
+    this.baseService.getData('/Product?pageSize=4&pageNumber=1').subscribe({
       next: (response: any) => {
         console.log(response);
-        this.products = response;
+        this.products = response.data;
       },
       error: (err) => {
         console.log(err);

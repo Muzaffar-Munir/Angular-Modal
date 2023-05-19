@@ -32,3 +32,11 @@
       transform: rotate(360deg);
     }
   }
+
+  .product-page .nav-item a {
+    color: black !important
+  }
+
+  .product-page .has-search .input-box::placeholder {
+    color: unset;
+}

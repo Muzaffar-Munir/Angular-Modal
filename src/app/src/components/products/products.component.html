@@ -1,0 +1,47 @@
+<div class="container" style="margin-top: 6rem;">
+    <div class="row list-products">
+
+
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" data-aos="fade-down" *ngFor="let product of response?.data">
+            <div class="card">
+                <a [routerLink]="['/product-details', product.id]" class="link-decoration">
+                    <img [src]="product?.imageUrls ? environment.backendUrl + product?.imageUrls[0]:  './assets/images/slide1.jpg'"
+                        class="card-img-top" [alt]="product.name">
+                    <div class="card-body">
+                        <p class="opacity-moderate"> {{product?.category}} | {{product?.size}} | {{product?.qty}} |
+                            {{product?.brand}}</p>
+                        <h6 class="card-title curosr font-weight-bold">{{product?.title}}</h6>
+                        <div class="card-text">
+                            <div class="d-flex justify-content-between sticky">
+                                <div class="product-rating">
+                                    <i class="bi bi-star-fill color-gold"></i><span class="opacity-moderate"> 4.9 |
+                                        2500</span>
+                                </div>
+                                <div class="product-price curosr">
+                                    $ {{product.price | number: '1.0-0'}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+
+
+        <ul class="pagination justify-content-center mt-4">
+            <li class="page-item" [ngClass]="response && response?.pageNumber==1 ? 'disabled' :''" >
+                <a class="page-link"  aria-label="Previous" (click)="pageChange(1)">
+                    <span aria-hidden="true" class="bi-chevron-left"></span>
+                </a>
+            </li>
+            <li class="page-item curosr" *ngFor="let item of [].constructor(response.totalPages); let i=index"><a class="page-link" [ngClass]="response.pageNumber === i+1 ? 'active' :''" (click)="pageChange(i+1)">{{i+1}}</a></li>
+            <li class="page-item curosr" [ngClass]="response && response?.pageNumber== response.totalPages ? 'disabled' :''">
+                <a class="page-link"  aria-label="Next" (click)="pageChange(response.totalPages)">
+                    <span aria-hidden="true" class="bi-chevron-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

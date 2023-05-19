@@ -529,7 +529,7 @@ body {
     color: var(--primary-color);
 }
 
-.top-reviews .pagination .page-link {
+.pagination .page-link {
     background-color: transparent;
     color: var(--secondary-color);
     border: unset;
@@ -622,4 +622,9 @@ body {
 }
 .mobile-header a {
     color: unset;
+}
+
+.faq-img{
+    background-image: url('../images/faq-img.png');
+    padding: 0 0 35rem;
 }

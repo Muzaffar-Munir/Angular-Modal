@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { BaseService } from '../services/base.service';
+import { BaseService } from '../../../services/base.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
