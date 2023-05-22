@@ -1,6 +1,6 @@
 
 
-<form action="">
+<form ngNativeValidate (submit)="sendMessage()">
     <div class="mb-3">
         <input type="text" name="userName" required [(ngModel)]="user.name" class="form-control" placeholder="Your name">
     </div>
@@ -11,6 +11,6 @@
         <textarea class="form-control" required name="message" [(ngModel)]="user.message"  placeholder="Your message" rows="3"></textarea>
     </div>
     <div class="mb-3">
-        <button type="submit" (click)="sendMessage()" class="btn review-btn">Submit</button>
+        <button type="submit" class="btn review-btn">Submit</button>
     </div>
 </form>

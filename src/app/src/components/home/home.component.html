@@ -220,9 +220,9 @@
               [src]="product?.imageUrls ? enviroment.backendUrl + product?.imageUrls[0]:  './assets/images/slide1.png'"
               class="card-img-top" [alt]="product.name">
             <div class="card-body">
-              <p class="opacity-moderate"> {{product?.category}} | {{product?.size}} | {{product?.qty}} |
+              <p class="opacity-moderate"> {{product?.category}} | {{product?.size}} |
                 {{product?.brand}}</p>
-              <h6 class="card-title curosr font-weight-bold">{{product?.title}}</h6>
+              <h6 class="card-title curosr font-weight-bold">{{product?.title  | slice:0:30}} <span *ngIf="product?.title.length>30"> ...</span></h6>
               <div class="card-text">
                 <div class="d-flex justify-content-between sticky">
                   <div class="product-rating">

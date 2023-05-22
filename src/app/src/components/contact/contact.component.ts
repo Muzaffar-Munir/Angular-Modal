@@ -34,6 +34,7 @@ export class ContactComponent implements OnInit {
       }
     })
   }
+  
   hide(){
     this.onClose.emit(true)
   }
