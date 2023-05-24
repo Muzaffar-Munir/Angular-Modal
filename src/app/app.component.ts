@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   isHome: boolean = true;
   subscriptionEmail: string = '';
   user: any;
+  currentYear: number = new Date().getFullYear();
   constructor(public loaderService: LoaderService, private cdr: ChangeDetectorRef,
     private modalService: BsModalService, private router: Router,
     private baseService: BaseService, private toastr: ToastrService) {

@@ -1,3 +1,9 @@
+@media only screen and (max-width: 475px) {
+    .list-products .card img {
+        max-height: unset;
+    }
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     html {
@@ -52,7 +58,7 @@
     .list-products .card img {
         object-fit: contain;
         background-color: var(--paragraph-color);
-        max-height: 10rem;
+        /* max-height: 10rem; */
     }
 
     .product-recomendations .card {

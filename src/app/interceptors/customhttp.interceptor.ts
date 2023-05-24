@@ -27,13 +27,15 @@ export class CustomhttpInterceptor implements HttpInterceptor {
         }
       }, (error) => {
         this.spinnerService.hide();
+        console.log(error);
+        
         if (error && error.error && error.error.errors) {
           this.toastr.error(this.formatErrorMessages(error.error.errors));
           return;
         }
 
 
-        this.toastr.error('Error, Something went wrong!')
+        this.toastr.error(error?.error?.message  || 'Error, Something went wrong!')
 
       }));
   }

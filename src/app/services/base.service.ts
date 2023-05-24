@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class BaseService {
+  pageSize: number = 8;
   constructor(private http: HttpClient) { }
 
   getData(url: string){

@@ -48,7 +48,7 @@ modalRef?: BsModalRef;
   }
 
   private getProducts() {
-    this.baseService.getData('/Product?pageSize=4&pageNumber=1').subscribe({
+    this.baseService.getData(`/Product?pageSize=${this.baseService.pageSize}&pageNumber=1`).subscribe({
       next: (response: any) => {
         console.log(response);
         this.products = response.data;

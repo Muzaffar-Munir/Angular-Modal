@@ -21,7 +21,7 @@ ngOnInit(): void {
 }
 
   private getProducts() {
-    this.baseService.getData(`/Product?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`).subscribe({
+    this.baseService.getData(`/Product?pageNumber=${this.pageNumber}&pageSize=${this.baseService.pageSize}`).subscribe({
       next: (response: any) => {
         console.log(response);
         this.response = response;

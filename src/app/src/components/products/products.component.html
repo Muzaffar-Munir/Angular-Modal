@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <p class="opacity-moderate"> {{product?.category}} | {{product?.size}} |
                             {{product?.brand}}</p>
-                            <h6 class="card-title curosr font-weight-bold">{{product?.title  | slice:0:30}} <span *ngIf="product?.title.length>30"> ...</span></h6>
+                            <h6 class="card-title curosr font-weight-bold">{{product?.title  | slice:0:25}} <span *ngIf="product?.title.length>25"> ...</span></h6>
                         <div class="card-text">
                             <div class="d-flex justify-content-between sticky">
                                 <div class="product-rating">
